@@ -1,6 +1,7 @@
-let x = document.getElementById("x");
+let navbar = document.getElementById("navbar");
 
-let h1 = document.createElement("h1");
-h1.textContent = "home.js script";
+import navigationBar from '../components/navbar.js';
 
-x.appendChild(h1);
+navigationBar().then((res) => {
+    navbar.innerHTML = res;
+});
