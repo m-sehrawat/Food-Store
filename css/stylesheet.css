@@ -3,3 +3,15 @@ body {
     margin: 0px;
 }
 
+#display {
+    max-width: 1200px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(4, 22%);
+    gap: 25px;
+}
+
+#boxSize {
+    max-width: 600px;
+    margin: auto;
+}
