@@ -1,7 +1,7 @@
 import { showDishes, appendDishes } from "../components/show.dishes.js";
 
 
-showDishes(`https://www.themealdb.com/api/json/v1/1/search.php?f=b`).then((response) => {
+showDishes(`https://www.themealdb.com/api/json/v1/1/search.php?f=c`).then((response) => {
     let data = response;
     console.log('data:', data)
     let display = document.getElementById("display");
@@ -10,3 +10,5 @@ showDishes(`https://www.themealdb.com/api/json/v1/1/search.php?f=b`).then((respo
 }).catch((err) => {
     console.log(err);
 });
+
+

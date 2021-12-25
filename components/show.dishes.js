@@ -1,18 +1,18 @@
-async function showDishes() {
+async function showDishes(url) {
 
-    let res = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?f=c`)
+    let res = await fetch(url)
 
     let data = await res.json();
 
     data = data.meals;
 
-    appendDishes(data);
+    return data;
 }
 
-//Calling the Function
-showDishes();
 
-function appendDishes(data) {
+async function appendDishes(data, parent) {
+
+    parent.innerHTML = null;
 
     data.forEach((element) => {
 
@@ -47,21 +47,25 @@ function appendDishes(data) {
 
         div.append(img, name, description, price, addToCart)
 
-        display.append(div);
+        parent.append(div);
     });
+
+    //LocalStorage 
+    if (localStorage.getItem('cart') === null) {
+        localStorage.setItem('cart', JSON.stringify([]));
+    }
+
+    //Function for storing added to cart products details
+    function cartDetails(element) {
+
+        let cartProducts = JSON.parse(localStorage.getItem('cart'));
+
+        cartProducts.push(element);
+
+        localStorage.setItem('cart', JSON.stringify(cartProducts));
+    }
 }
 
-//LocalStorage 
-if (localStorage.getItem('cart') === null) {
-    localStorage.setItem('cart', JSON.stringify([]));
-}
 
-//Function for storing added to cart products details
-function cartDetails(element) {
+export { showDishes, appendDishes };
 
-    let cartProducts = JSON.parse(localStorage.getItem('cart'));
-
-    cartProducts.push(element);
-
-    localStorage.setItem('cart', JSON.stringify(cartProducts));
-}
