@@ -27,6 +27,8 @@ async function getRequest() {
 
         let display = document.getElementById("display");
 
+        display.innerHTML = null;
+
         display.append(error);
     });
 }

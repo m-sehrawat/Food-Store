@@ -19,5 +19,7 @@ showDishes(`https://www.themealdb.com/api/json/v1/1/search.php?f=b`).then((respo
 
     let display = document.getElementById("display");
 
+    display.innerHTML = null;
+
     display.append(error);
 });
