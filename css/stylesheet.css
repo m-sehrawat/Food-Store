@@ -15,3 +15,10 @@ body {
     max-width: 600px;
     margin: auto;
 }
+
+.foodBox {
+    width: 600px;
+    margin: 10px auto;
+    padding: 20px;
+
+}

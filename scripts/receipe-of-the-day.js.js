@@ -1,6 +1,6 @@
 async function showDishes() {
 
-    let res = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?f=b`)
+    let res = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?f=c`)
 
     let data = await res.json();
 
