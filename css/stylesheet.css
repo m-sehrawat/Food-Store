@@ -22,3 +22,9 @@ body {
     padding: 20px;
 
 }
+
+#orderDone {
+    width: 800px;
+    margin: auto;
+    margin-top: 100px;
+}

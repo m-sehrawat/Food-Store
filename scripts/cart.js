@@ -1,4 +1,5 @@
 let cartDetails = JSON.parse(localStorage.getItem('cart'));
+console.log('cartDetails:', cartDetails)
 
 appendDishes(cartDetails);
 
@@ -6,7 +7,7 @@ function appendDishes(data) {
 
     let sum = 0;
 
-    data.forEach((element) => {
+    data.forEach((element, index) => {
 
         let { idMeal, strMeal, strCategory, strTags, strMealThumb } = element;
 
@@ -30,7 +31,21 @@ function appendDishes(data) {
         price.setAttribute('class', 'ps-3 fs-5')
         sum += (Number(idMeal) / 100);
 
-        div.append(img, name, description, price)
+        let remove = document.createElement('button');
+        remove.textContent = "Remove";
+        remove.setAttribute('class', 'btn btn-outline-danger ms-3 mb-3');
+        remove.onclick = () => {
+
+            let cart = JSON.parse(localStorage.getItem("cart"));
+
+            cart.splice(index, 1);
+
+            localStorage.setItem("cart", JSON.stringify(cart));
+
+            location.reload();
+        }
+
+        div.append(img, name, description, price, remove)
 
         display.append(div);
     });
@@ -44,25 +59,18 @@ function appendDishes(data) {
 }
 
 //Send notifiction function
-function sendAlerts() {
+function orderDone() {
 
     setTimeout(() => {
-        alert(`Your order is accepted`)
-    }, 0);
+        alert("Your order is confirmed");
 
-    setTimeout(() => {
-        alert(`Your order is being cooked`)
-    }, 3000);
+        setTimeout(() => {
+            document.body.style = "background-color:white";
+            document.body.innerHTML = `<div id="orderDone"><img class="img-fluid" src="https://www.legalraasta.com/wp-content/uploads/2017/06/legalraasta.gif"></div>`
 
-    setTimeout(() => {
-        alert(`Your order is ready`)
-    }, 8000);
-
-    setTimeout(() => {
-        alert(`Order out for delivery`)
-    }, 10000);
-
-    setTimeout(() => {
-        alert(`Order delivered`)
-    }, 12000);
+            setTimeout(() => {
+                window.location.href = "index.html"
+            }, 4000)
+        }, 1000)
+    }, 1000);
 }
