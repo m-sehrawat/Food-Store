@@ -7,16 +7,21 @@
     padding: 20px;
 }
 
-.gird>div {
+.gird>a>div {
     text-align: center;
     overflow: hidden;
     border-radius: 10px;
     cursor: pointer;
 }
 
-.gird>div>div {
+.gird>a>div>div {
     overflow: hidden;
     margin-bottom: 20px;
+}
+
+a{
+    text-decoration: none;
+    color: black;
 }
 
 img {
