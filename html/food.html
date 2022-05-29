@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,17 +9,35 @@
     <link rel="stylesheet" href="../css/food.css">
     <title>Today's Receipe</title>
 </head>
+
 <body>
 
     <div id="navbar"></div>
 
-    <p class="display-6 text-center mt-2">Food Menu</p>
+    <!-- <p class="display-6 text-center mt-2">Food Menu</p> -->
+
+    <div>
+        <div class="flex">
+            <div class="dropdown">
+                <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+                    Sort
+                </button>
+                <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="dropdownMenuButton2">
+                    <li id="sortLH" class="dropdown-item mt-2">Price: Low - High</li>
+                    <li id="sortHL" class="dropdown-item mt-2">Price: High - Low</li>
+                    <li id="ratingLH" class="dropdown-item mt-2">Rating: Low - High</li>
+                    <li id="ratingHL" class="dropdown-item mt-2">Rating: High - Low</li>
+                </ul>
+            </div>
+        </div>
+    </div>
 
     <!-- Display Dishes -->
     <div id="display"></div>
-    
-    
+
+
 </body>
+
 </html>
 
 <!-- ------------------------ Bootstrap script -------------------------------- -->

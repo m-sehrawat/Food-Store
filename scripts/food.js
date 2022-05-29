@@ -1,10 +1,13 @@
 import { appendData } from "../functions/appendData.js";
 import { handleGetData } from "../functions/handleGetRequest.js";
 import { getItem, setItem } from "../functions/localStorage.js";
-// import { showDishes, appendDishes } from "../components/show.dishes.js";
+
 
 const DISH_URL = `https://www.themealdb.com/api/json/v1/1/search.php?f=c`;
+
 const display = document.getElementById("display");
+
+
 
 async function displayFoodItem() {
 
@@ -14,37 +17,31 @@ async function displayFoodItem() {
 
     const dishData = getItem("food") || [];
 
-    // console.table(dishData[0]);
-
     appendData(dishData, display);
+
+    document.getElementById("sortLH").addEventListener("click", () => {
+        dishData.sort((a, b) => a.price - b.price);
+        appendData(dishData, display);
+    });
+
+    document.getElementById("sortHL").addEventListener("click", () => {
+        dishData.sort((a, b) => b.price - a.price);
+        appendData(dishData, display);
+    });
+    document.getElementById("ratingLH").addEventListener("click", () => {
+        dishData.sort((a, b) => a.rating - b.rating);
+        appendData(dishData, display);
+    });
+
+    document.getElementById("ratingHL").addEventListener("click", () => {
+        dishData.sort((a, b) => b.rating - a.rating);
+        appendData(dishData, display);
+    });
+
 }
-
-
 
 displayFoodItem();
 
 
-// showDishes(`https://www.themealdb.com/api/json/v1/1/search.php?f=c`).then((response) => {
-
-//     let data = response;
-
-//     let display = document.getElementById("display");
-
-//     appendDishes(data, display)
-
-// }).catch((err) => {
-
-//     console.log(err);
-
-//     let error = document.createElement('img');
-
-//     error.src = 'https://www.waterandshark.com/assets/img/icons/noresult.gif';
-
-//     let display = document.getElementById("display");
-
-//     display.innerHTML = null;
-
-//     display.append(error);
-// });
 
 

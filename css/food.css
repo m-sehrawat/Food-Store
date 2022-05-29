@@ -2,6 +2,15 @@ body {
     font-family: 'Source Sans Pro', sans-serif;
 }
 
+.flex {
+    border: 1px solid red;
+    margin: 50px auto 0px;
+    max-width:1300px;
+    padding: 0px 20px;
+    display: flex;
+    flex-direction: row-reverse;
+}
+
 #display {
     max-width: 1300px;
     margin: 50px auto;
