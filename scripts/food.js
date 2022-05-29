@@ -1,27 +1,50 @@
-import { showDishes, appendDishes } from "../components/show.dishes.js";
+import { appendData } from "../components/appendData.js";
+import { handleGetData } from "../components/handleGetRequest.js";
+import { getItem, setItem } from "../components/localStorage.js";
+// import { showDishes, appendDishes } from "../components/show.dishes.js";
+
+const DISH_URL = `https://www.themealdb.com/api/json/v1/1/search.php?f=c`;
+const display = document.getElementById("display");
+
+async function displayFoodItem() {
+
+    if (!getItem("food")) {
+        setItem("food", await handleGetData(DISH_URL));
+    }
+
+    const dishData = getItem("food") || [];
+
+    console.table(dishData[0]);
+
+    appendData(dishData, display);
+}
 
 
-showDishes(`https://www.themealdb.com/api/json/v1/1/search.php?f=c`).then((response) => {
 
-    let data = response;
+displayFoodItem();
 
-    let display = document.getElementById("display");
 
-    appendDishes(data, display)
+// showDishes(`https://www.themealdb.com/api/json/v1/1/search.php?f=c`).then((response) => {
 
-}).catch((err) => {
+//     let data = response;
 
-    console.log(err);
+//     let display = document.getElementById("display");
 
-    let error = document.createElement('img');
+//     appendDishes(data, display)
 
-    error.src = 'https://www.waterandshark.com/assets/img/icons/noresult.gif';
+// }).catch((err) => {
 
-    let display = document.getElementById("display");
+//     console.log(err);
 
-    display.innerHTML = null;
+//     let error = document.createElement('img');
 
-    display.append(error);
-});
+//     error.src = 'https://www.waterandshark.com/assets/img/icons/noresult.gif';
+
+//     let display = document.getElementById("display");
+
+//     display.innerHTML = null;
+
+//     display.append(error);
+// });
 
 

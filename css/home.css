@@ -41,12 +41,17 @@ img:hover {
 }
 
 
+@media screen and (max-width: 1024px) {
+    .gird {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
 @media screen and (max-width: 768px) {
     .gird {
         grid-template-columns: repeat(2, 1fr);
     }
 }
-
 
 @media screen and (max-width: 480px) {
     .gird {

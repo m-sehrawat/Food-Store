@@ -2,12 +2,14 @@ async function showDishes(url) {
 
     let res = await fetch(url)
 
-    let data = await res.json();
+    res = await res.json();
 
     data = data.meals;
 
     return data;
 }
+
+
 
 
 async function appendDishes(data, parent) {
