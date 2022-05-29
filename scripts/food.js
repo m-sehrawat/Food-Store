@@ -1,11 +1,13 @@
 import { appendData } from "../functions/appendData.js";
 import { handleGetData } from "../functions/handleGetRequest.js";
 import { getItem, setItem } from "../functions/localStorage.js";
+import { showTotal } from "../functions/showTotal.js";
 
 
 const DISH_URL = `https://www.themealdb.com/api/json/v1/1/search.php?f=c`;
 
 const display = document.getElementById("display");
+const totalFood = document.getElementById("totalFood");
 
 
 
@@ -15,7 +17,9 @@ async function displayFoodItem() {
         setItem("food", await handleGetData(DISH_URL));
     }
 
-    const dishData = getItem("food") || [];
+    let dishData = getItem("food");
+
+    showTotal(dishData, totalFood);
 
     appendData(dishData, display);
 
@@ -37,6 +41,11 @@ async function displayFoodItem() {
         dishData.sort((a, b) => b.rating - a.rating);
         appendData(dishData, display);
     });
+
+    document.getElementById("reset").addEventListener("click", () => {
+        dishData = getItem("food");
+        appendData(dishData, display);
+    })
 
 }
 

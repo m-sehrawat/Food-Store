@@ -3,12 +3,20 @@ body {
 }
 
 .flex {
-    border: 1px solid red;
     margin: 50px auto 0px;
     max-width:1300px;
     padding: 0px 20px;
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 20px;
+}
+
+.flex>div:last-child{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
 }
 
 #display {
