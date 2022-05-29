@@ -1,0 +1,50 @@
+.gird {
+    max-width: 1200px;
+    margin: 20px auto 0px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding: 20px;
+}
+
+.gird>div {
+    text-align: center;
+    overflow: hidden;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.gird>div>div {
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+img {
+    width: 100%;
+    transition: all 1s ease;
+}
+
+img:hover {
+    transform: scale(1.2);
+}
+
+.headingText {
+    margin: 0px auto;
+    max-width: 700px;
+    padding: 20px;
+    color: gray;
+}
+
+
+@media screen and (max-width: 768px) {
+    .gird {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+@media screen and (max-width: 480px) {
+    .gird {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
