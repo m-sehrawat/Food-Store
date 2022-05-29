@@ -1,12 +1,15 @@
+import { shortString } from "./extraFunctions.js";
+
 export const appendData = (data, parent) => {
 
     parent.innerHTML = null;
 
     data.map((item) => {
 
-        const { title, image, price, category } = item;
+        const { title, image, price, category, rating } = item;
 
         const div = document.createElement('div');
+        div.setAttribute('id', 'foodDiv');
 
         const imgDiv = document.createElement('div');
         imgDiv.setAttribute('id', 'imgDiv');
@@ -14,36 +17,28 @@ export const appendData = (data, parent) => {
         const detailsDiv = document.createElement('div');
         detailsDiv.setAttribute('id', 'detailsDiv');
 
-        const btnDiv = document.createElement('div');
-        btnDiv.setAttribute('id', 'btnDiv');
-
         const img = document.createElement('img');
         img.src = image;
-        imgDiv.append(img);
-
+        
         const name = document.createElement('p');
-        name.textContent = title;
-        name.setAttribute('class', 'ps-3 fs-5')
+        name.textContent = shortString(title, 20).toUpperCase();
+        name.style = 'font-weight:600; font-size:17px'
+
+        const foodCategory = document.createElement('p');
+        foodCategory.textContent = category;
+        foodCategory.style = 'color:gray; font-size:14px'
 
         const rate = document.createElement('p');
-        rate.textContent = `₹ ${price}`;
-        rate.setAttribute('class', 'ps-3 fs-5')
+        rate.textContent = `₹${price}`;
+        rate.style = 'color:red; font-weight:600; font-size:22px';
 
-        detailsDiv.append(name, rate)
+        const foodRating = document.createElement('p');
+        foodRating.textContent = `Rating: ${rating}`;
+        foodRating.style = 'color:gray; font-size:14px'
 
-        const addToCart = document.createElement('button');
-        addToCart.textContent = "Add to Cart";
-        addToCart.setAttribute('class', 'btn btn-outline-danger ms-3 mb-3');
-
-        btnDiv.append(addToCart)
-
-        // addToCart.onclick = () => {
-        //     cartDetails(item);
-        //     alert("Porduct is added to cart");
-        // }
-
-        div.append(imgDiv, detailsDiv, btnDiv)
-
+        imgDiv.append(img);
+        detailsDiv.append(name, foodCategory, rate, foodRating);
+        div.append(imgDiv, detailsDiv)
         parent.append(div);
     });
 

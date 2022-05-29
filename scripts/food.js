@@ -1,6 +1,6 @@
-import { appendData } from "../components/appendData.js";
-import { handleGetData } from "../components/handleGetRequest.js";
-import { getItem, setItem } from "../components/localStorage.js";
+import { appendData } from "../functions/appendData.js";
+import { handleGetData } from "../functions/handleGetRequest.js";
+import { getItem, setItem } from "../functions/localStorage.js";
 // import { showDishes, appendDishes } from "../components/show.dishes.js";
 
 const DISH_URL = `https://www.themealdb.com/api/json/v1/1/search.php?f=c`;
@@ -14,7 +14,7 @@ async function displayFoodItem() {
 
     const dishData = getItem("food") || [];
 
-    console.table(dishData[0]);
+    // console.table(dishData[0]);
 
     appendData(dishData, display);
 }

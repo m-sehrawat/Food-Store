@@ -1,3 +1,5 @@
+import { randomNumber } from "./extraFunctions.js";
+
 export const handleGetData = async (url) => {
     try {
         let res = await fetch(url);
@@ -12,14 +14,14 @@ export const handleGetData = async (url) => {
                 image: item.strMealThumb,
                 category: item.strCategory,
                 price: +item.idMeal - 52400,
-                details: item.strInstructions
+                details: item.strInstructions,
+                rating: +randomNumber()
             }
         ))
 
         return data;
 
     } catch (err) {
-
         console.log(err);
     }
 };

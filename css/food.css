@@ -1,17 +1,22 @@
+body {
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
 #display {
-    border: 1px solid red;
     max-width: 1300px;
     margin: 50px auto;
     padding: 20px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 30px;
+}
 
+#foodDiv {
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
 #imgDiv {
     overflow: hidden;
-    border-radius: 10px;
 }
 
 #imgDiv>img {
@@ -21,6 +26,15 @@
 
 #imgDiv>img:hover{
     transform: scale(1.2);
+}
+
+#detailsDiv{
+    padding: 20px;
+    min-height: 140px;
+}
+
+#detailsDiv p{
+    margin: 0px;
 }
 
 
