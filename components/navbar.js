@@ -1,22 +1,22 @@
 async function navigationBar() {
-
-    return `<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#">Food App</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-                <a class="nav-link" href="index.html">Home</a> &ensp; 
-                <a class="nav-link" href="search.html">Search</a> &ensp;  
-                <a class="nav-link" href="cart.html">Cart</a> &ensp; 
-                <a class="nav-link" href="receipe-of-the-day.html">Receipes of the Day</a> &ensp; 
-                <a class="nav-link" href="trending-receipe.html">Trending Receipes</a>  
+    return (
+        `<nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid" id="navItems">
+                <a class="navbar-brand" href="../index.html">Food Store</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
+                        <a class="nav-link" href="../html/food.html">Food</a> &ensp;
+                        <a class="nav-link" href="../html/trending.html">Trending</a> &ensp;
+                        <a class="nav-link" href="../html/search.html">Search</a> &ensp;
+                        <a class="nav-link" href="../html/cart.html">Cart</a> 
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-</nav>`
+        </nav>`
+    )
 }
 
 export default navigationBar;
