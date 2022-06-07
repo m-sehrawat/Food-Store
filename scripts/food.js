@@ -19,7 +19,7 @@ async function displayFoodItem() {
 
     let dishData = getItem("food");
 
-    showTotal(dishData, totalFood);
+    showTotal(dishData, totalFood, 'Special');
 
     appendData(dishData, display);
 

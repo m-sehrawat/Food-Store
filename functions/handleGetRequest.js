@@ -17,7 +17,7 @@ export const handleGetData = async (url) => {
                 details: item.strInstructions,
                 rating: +randomNumber()
             }
-        ))
+        ));
 
         return data;
 
