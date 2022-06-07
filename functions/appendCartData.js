@@ -16,7 +16,7 @@ export const appendCartData = (data, parent, orderTotalParent) => {
         imgDiv.setAttribute('id', 'imgDiv');
 
         const detailsDiv = document.createElement('div');
-        detailsDiv.setAttribute('id', 'detailsDiv');
+        detailsDiv.setAttribute('id', 'cartDetailsDiv');
 
         const btnDiv = document.createElement('div');
         btnDiv.setAttribute('id', 'btnDiv');
@@ -28,17 +28,9 @@ export const appendCartData = (data, parent, orderTotalParent) => {
         name.textContent = shortString(title, 20).toUpperCase();
         name.style = 'font-weight:600; font-size:17px'
 
-        const foodCategory = document.createElement('p');
-        foodCategory.textContent = category;
-        foodCategory.style = 'color:gray; font-size:14px'
-
         const rate = document.createElement('p');
         rate.textContent = `₹${price}`;
         rate.style = 'color:red; font-weight:600; font-size:22px';
-
-        const foodRating = document.createElement('p');
-        foodRating.textContent = `Rating: ${rating}`;
-        foodRating.style = 'color:gray; font-size:14px';
 
         const toastLiveExample = document.getElementById('liveToast');
 
@@ -50,13 +42,13 @@ export const appendCartData = (data, parent, orderTotalParent) => {
             setItem("cartData", data);
             const toast = new bootstrap.Toast(toastLiveExample);
             toast.show();
+            appendCartData(data, parent, orderTotalParent);
             getTotalOrderAmount(data, orderTotalParent);
-            appendCartData(data, parent);
         });
 
         imgDiv.append(img);
         btnDiv.append(removeFromCart);
-        detailsDiv.append(name, foodCategory, rate, foodRating);
+        detailsDiv.append(name, rate);
         div.append(imgDiv, detailsDiv, btnDiv);
         parent.append(div);
 
@@ -69,8 +61,7 @@ export const getTotalOrderAmount = (data, parent) => {
     const quantity = data.length;
     const cartTotal = { total, quantity };
     setItem('cartTotal', cartTotal);
-    appendCartTotal(cartTotal, parent)
-    return cartTotal;
+    appendCartTotal(cartTotal, parent);
 }
 
 export const appendCartTotal = ({ total, quantity }, parent) => {

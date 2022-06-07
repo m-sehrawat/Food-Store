@@ -46,13 +46,23 @@ body {
 }
 
 #detailsDiv{
-    padding: 20px;
+    padding:20px;
     min-height: 140px;
 }
 
 #detailsDiv p{
     margin: 0px;
 }
+
+#cartDetailsDiv{
+    padding:10px 20px;
+    min-height: 30px;
+}
+
+#cartDetailsDiv p{
+    margin: 0px;
+}
+
 
 #btnDiv {
     padding:0px 20px 20px;
