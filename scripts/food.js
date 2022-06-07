@@ -1,6 +1,7 @@
 import { appendData } from "../functions/appendData.js";
 import { handleGetData } from "../functions/handleGetRequest.js";
 import { getItem, setItem } from "../functions/localStorage.js";
+import { notify } from "../components/notify.js";
 import { showTotal } from "../functions/showTotal.js";
 
 
@@ -8,7 +9,9 @@ const DISH_URL = `https://www.themealdb.com/api/json/v1/1/search.php?f=c`;
 
 const display = document.getElementById("display");
 const totalFood = document.getElementById("totalFood");
+const notifyDiv = document.getElementById("notifyDiv");
 
+notifyDiv.innerHTML = notify('Item is added to the cart');
 
 
 async function displayFoodItem() {
@@ -21,7 +24,7 @@ async function displayFoodItem() {
     let cartData = getItem("cartData") || [];
 
     appendData(dishData, display, cartData);
-    
+
     showTotal(dishData, totalFood, 'Special');
 
     document.getElementById("sortLH").addEventListener("click", () => {
@@ -53,5 +56,12 @@ async function displayFoodItem() {
 displayFoodItem();
 
 
-
+// var toastTrigger = document.getElementById('liveToastBtn')
+// var toastLiveExample = document.getElementById('liveToast')
+// if (toastTrigger) {
+//     toastTrigger.addEventListener('click',  () => {
+//         const toast = new bootstrap.Toast(toastLiveExample);
+//         toast.show();
+//     });
+// }
 

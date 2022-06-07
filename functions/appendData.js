@@ -23,7 +23,7 @@ export const appendData = (data, parent, cartData) => {
 
         const img = document.createElement('img');
         img.src = image;
-        
+
         const name = document.createElement('p');
         name.textContent = shortString(title, 20).toUpperCase();
         name.style = 'font-weight:600; font-size:17px'
@@ -38,21 +38,27 @@ export const appendData = (data, parent, cartData) => {
 
         const foodRating = document.createElement('p');
         foodRating.textContent = `Rating: ${rating}`;
-        foodRating.style = 'color:gray; font-size:14px'
+        foodRating.style = 'color:gray; font-size:14px';
+
+        const toastLiveExample = document.getElementById('liveToast');
 
         const addToCart = document.createElement('button');
         addToCart.textContent = "Add to cart";
         addToCart.setAttribute('class', 'btn btn-outline-success');
-        addToCart.addEventListener('click', () => { 
+        addToCart.addEventListener('click', () => {
             cartData.push(item);
             setItem("cartData", cartData);
-         });
+            
+            const toast = new bootstrap.Toast(toastLiveExample);
+            toast.show();
+        });
 
         imgDiv.append(img);
         btnDiv.append(addToCart);
         detailsDiv.append(name, foodCategory, rate, foodRating);
         div.append(imgDiv, detailsDiv, btnDiv)
         parent.append(div);
+
     });
 
 }

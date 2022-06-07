@@ -1,3 +1,4 @@
+import { notify } from "../components/notify.js";
 import { appendData } from "../functions/appendData.js";
 import { handleGetData } from "../functions/handleGetRequest.js";
 import { getItem, setItem } from "../functions/localStorage.js";
@@ -8,6 +9,9 @@ const DISH_URL = `https://www.themealdb.com/api/json/v1/1/search.php?f=b`;
 
 const display = document.getElementById("display");
 const totalFood = document.getElementById("totalFood");
+const notifyDiv = document.getElementById("notifyDiv");
+
+notifyDiv.innerHTML = notify('Item is added to the cart');
 
 
 async function displayFoodItem() {
