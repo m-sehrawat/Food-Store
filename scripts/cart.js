@@ -1,5 +1,5 @@
 import { getItem } from "../functions/localStorage.js";
-import { appendCartData } from "../functions/appendCartData.js";
+import { appendCartData, getTotalOrderAmount } from "../functions/appendCartData.js";
 import { notify } from "../components/notify.js";
 
 
@@ -9,5 +9,7 @@ const notifyDiv = document.getElementById("notifyDiv");
 notifyDiv.innerHTML = notify('danger', 'Item is added to the cart');
 
 let cartData = getItem("cartData") || [];
+
+getTotalOrderAmount(cartData);
 
 appendCartData(cartData, display);

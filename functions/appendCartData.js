@@ -51,13 +51,23 @@ export const appendCartData = (data, parent) => {
             const toast = new bootstrap.Toast(toastLiveExample);
             toast.show();
             appendCartData(data, parent);
+            getTotalOrderAmount(data);
         });
 
         imgDiv.append(img);
         btnDiv.append(removeFromCart);
         detailsDiv.append(name, foodCategory, rate, foodRating);
-        div.append(imgDiv, detailsDiv, btnDiv)
+        div.append(imgDiv, detailsDiv, btnDiv);
         parent.append(div);
 
     });
+}
+
+
+export const getTotalOrderAmount = (data) => {
+    const total = data.map((e) => e.price).reduce((prev, curr) => prev + curr);
+    const quantity = data.length;
+    const cartTotal = { total, quantity };
+    setItem('cartTotal', cartTotal);
+    return cartTotal;
 }

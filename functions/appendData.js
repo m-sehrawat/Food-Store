@@ -59,5 +59,5 @@ export const appendData = (data, parent, cartData) => {
         parent.append(div);
 
     });
-
 }
+
