@@ -54,6 +54,13 @@ body {
     margin: 0px;
 }
 
+#btnDiv {
+    padding:0px 20px 20px;
+}
+
+#btnDiv>button{
+    width: 100%;
+}
 
 @media screen and (max-width: 1024px) {
     #display {

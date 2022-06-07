@@ -17,6 +17,9 @@ export const appendData = (data, parent) => {
         const detailsDiv = document.createElement('div');
         detailsDiv.setAttribute('id', 'detailsDiv');
 
+        const btnDiv = document.createElement('div');
+        btnDiv.setAttribute('id', 'btnDiv');
+
         const img = document.createElement('img');
         img.src = image;
         
@@ -36,9 +39,15 @@ export const appendData = (data, parent) => {
         foodRating.textContent = `Rating: ${rating}`;
         foodRating.style = 'color:gray; font-size:14px'
 
+        const addToCart = document.createElement('button');
+        addToCart.textContent = "Add to cart"
+        addToCart.setAttribute('class', 'btn btn-outline-success')
+
+        
         imgDiv.append(img);
+        btnDiv.append(addToCart);
         detailsDiv.append(name, foodCategory, rate, foodRating);
-        div.append(imgDiv, detailsDiv)
+        div.append(imgDiv, detailsDiv, btnDiv)
         parent.append(div);
     });
 
