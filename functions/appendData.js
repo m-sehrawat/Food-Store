@@ -1,6 +1,7 @@
 import { shortString } from "./extraFunctions.js";
+import { setItem } from "./localStorage.js";
 
-export const appendData = (data, parent) => {
+export const appendData = (data, parent, cartData) => {
 
     parent.innerHTML = null;
 
@@ -40,10 +41,13 @@ export const appendData = (data, parent) => {
         foodRating.style = 'color:gray; font-size:14px'
 
         const addToCart = document.createElement('button');
-        addToCart.textContent = "Add to cart"
-        addToCart.setAttribute('class', 'btn btn-outline-success')
+        addToCart.textContent = "Add to cart";
+        addToCart.setAttribute('class', 'btn btn-outline-success');
+        addToCart.addEventListener('click', () => { 
+            cartData.push(item);
+            setItem("cartData", cartData);
+         });
 
-        
         imgDiv.append(img);
         btnDiv.append(addToCart);
         detailsDiv.append(name, foodCategory, rate, foodRating);
@@ -51,18 +55,4 @@ export const appendData = (data, parent) => {
         parent.append(div);
     });
 
-    // //LocalStorage 
-    // if (localStorage.getItem('cart') === null) {
-    //     localStorage.setItem('cart', JSON.stringify([]));
-    // }
-
-    // //Function for storing added to cart products details
-    // function cartDetails(element) {
-
-    //     const cartProducts = JSON.parse(localStorage.getItem('cart'));
-
-    //     cartProducts.push(element);
-
-    //     localStorage.setItem('cart', JSON.stringify(cartProducts));
-    // }
 }

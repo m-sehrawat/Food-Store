@@ -18,10 +18,11 @@ async function displayFoodItem() {
     }
 
     let dishData = getItem("food");
+    let cartData = getItem("cartData") || [];
 
+    appendData(dishData, display, cartData);
+    
     showTotal(dishData, totalFood, 'Special');
-
-    appendData(dishData, display);
 
     document.getElementById("sortLH").addEventListener("click", () => {
         dishData.sort((a, b) => a.price - b.price);
