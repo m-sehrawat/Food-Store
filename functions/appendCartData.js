@@ -1,11 +1,11 @@
 import { shortString } from "./extraFunctions.js";
 import { setItem } from "./localStorage.js";
 
-export const appendData = (data, parent, cartData) => {
+export const appendCartData = (data, parent) => {
 
     parent.innerHTML = null;
 
-    data.map((item) => {
+    data.map((item, index) => {
 
         const { title, image, price, category, rating } = item;
 
@@ -42,22 +42,22 @@ export const appendData = (data, parent, cartData) => {
 
         const toastLiveExample = document.getElementById('liveToast');
 
-        const addToCart = document.createElement('button');
-        addToCart.textContent = "Add to cart";
-        addToCart.setAttribute('class', 'btn btn-outline-success');
-        addToCart.addEventListener('click', () => {
-            cartData.push(item);
-            setItem("cartData", cartData);
+        const removeFromCart = document.createElement('button');
+        removeFromCart.textContent = "Remove from cart";
+        removeFromCart.setAttribute('class', 'btn btn-outline-danger');
+        removeFromCart.addEventListener('click', () => {
+            data.splice(index, 1);
+            setItem("cartData", data);
             const toast = new bootstrap.Toast(toastLiveExample);
             toast.show();
+            appendCartData(data, parent);
         });
 
         imgDiv.append(img);
-        btnDiv.append(addToCart);
+        btnDiv.append(removeFromCart);
         detailsDiv.append(name, foodCategory, rate, foodRating);
         div.append(imgDiv, detailsDiv, btnDiv)
         parent.append(div);
 
     });
-
 }

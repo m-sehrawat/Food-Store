@@ -14,7 +14,6 @@ export const handleGetData = async (url) => {
                 image: item.strMealThumb,
                 category: item.strCategory,
                 price: +item.idMeal - 52400,
-                details: item.strInstructions,
                 rating: +randomNumber()
             }
         ));

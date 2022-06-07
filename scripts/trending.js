@@ -11,7 +11,7 @@ const display = document.getElementById("display");
 const totalFood = document.getElementById("totalFood");
 const notifyDiv = document.getElementById("notifyDiv");
 
-notifyDiv.innerHTML = notify('Item is added to the cart');
+notifyDiv.innerHTML = notify('success', 'Item is added to the cart');
 
 
 async function displayFoodItem() {
@@ -24,7 +24,7 @@ async function displayFoodItem() {
     let cartData = getItem("cartData") || [];
 
     appendData(dishData, display, cartData);
-    
+
     showTotal(dishData, totalFood, 'Trending');
 
 

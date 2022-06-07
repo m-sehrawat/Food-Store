@@ -1,7 +1,3 @@
-body {
-    padding: 0px;
-    margin: 0px;
-}
 
 #display {
     max-width: 1200px;
@@ -12,7 +8,7 @@ body {
 }
 
 #boxSize {
-    max-width: 600px;
+    max-width: 500px;
     margin: auto;
 }
 
