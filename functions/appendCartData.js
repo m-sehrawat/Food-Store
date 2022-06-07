@@ -1,7 +1,7 @@
 import { shortString } from "./extraFunctions.js";
 import { setItem } from "./localStorage.js";
 
-export const appendCartData = (data, parent) => {
+export const appendCartData = (data, parent, orderTotalParent) => {
 
     parent.innerHTML = null;
 
@@ -50,8 +50,8 @@ export const appendCartData = (data, parent) => {
             setItem("cartData", data);
             const toast = new bootstrap.Toast(toastLiveExample);
             toast.show();
+            getTotalOrderAmount(data, orderTotalParent);
             appendCartData(data, parent);
-            getTotalOrderAmount(data);
         });
 
         imgDiv.append(img);
@@ -64,10 +64,20 @@ export const appendCartData = (data, parent) => {
 }
 
 
-export const getTotalOrderAmount = (data) => {
-    const total = data.map((e) => e.price).reduce((prev, curr) => prev + curr);
+export const getTotalOrderAmount = (data, parent) => {
+    const total = data.map((e) => e.price).reduce((prev, curr) => prev + curr, 0);
     const quantity = data.length;
     const cartTotal = { total, quantity };
     setItem('cartTotal', cartTotal);
+    appendCartTotal(cartTotal, parent)
     return cartTotal;
+}
+
+export const appendCartTotal = ({ total, quantity }, parent) => {
+    parent.innerHTML = null;
+    const cartTotal = document.createElement('p');
+    cartTotal.innerText = `Total: ${total}`
+    const cartQuantity = document.createElement('p');
+    cartQuantity.innerText = `Quantity: ${quantity}`
+    parent.append(cartTotal, cartQuantity);
 }
