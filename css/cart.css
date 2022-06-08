@@ -15,9 +15,9 @@
 .cartFontDiv {
     display: flex;
     justify-content: space-between;
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 600;
-    margin: 20px auto;
+    margin: 10px auto;
 }
 
 #orderDone {
@@ -27,7 +27,6 @@
 }
 
 #cartMainDiv {
-    border: 1px solid red;
     display: grid;
     padding: 20px;
     max-width: 1400px;
@@ -35,11 +34,6 @@
     gap: 50px;
     grid-template-columns: 30% 66%;
 }
-
-#cartMainDiv>div {
-    border: 1px solid red;
-}
-
 
 #display {
     display: grid;
@@ -81,7 +75,6 @@
 #cartDetailsDiv p {
     margin: 0px;
 }
-
 
 #btnDiv {
     padding: 0px 20px 20px;

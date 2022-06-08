@@ -9,4 +9,4 @@ export const getItem = (key) => {
 
 export const setItem = (key, data) => {
     return localStorage.setItem(key, JSON.stringify(data));
-}
+};

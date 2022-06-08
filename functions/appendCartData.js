@@ -1,4 +1,4 @@
-import { shortString } from "./extraFunctions.js";
+import { shortString, numberWithCommas } from "./extraFunctions.js";
 import { setItem } from "./localStorage.js";
 
 export const appendCartData = (data, parent, orderTotalParent) => {
@@ -53,7 +53,7 @@ export const appendCartData = (data, parent, orderTotalParent) => {
         parent.append(div);
 
     });
-}
+};
 
 
 export const getTotalOrderAmount = (data, parent) => {
@@ -62,22 +62,33 @@ export const getTotalOrderAmount = (data, parent) => {
     const cartTotal = { total, quantity, shipping: total > 499 ? 0 : 50 };
     setItem('cartTotal', cartTotal);
     appendCartTotal(cartTotal, parent);
-}
+};
 
 export const appendCartTotal = ({ total, quantity, shipping }, parent) => {
     parent.innerHTML = null;
-    const cartDiv = document.createElement('div');
+
+    const cartDiv1 = document.createElement('div');
     const cartTotal1 = document.createElement('p');
     cartTotal1.innerText = `Food Cost:`;
     const cartTotal2 = document.createElement('p');
-    cartTotal2.innerText = `₹${total}`;
-    cartDiv.append(cartTotal1, cartTotal2)
-    cartDiv.setAttribute('class', 'cartFontDiv');
-    const cartQuantity = document.createElement('p');
-    cartQuantity.innerText = `Food Items: ${quantity}`;
-    cartQuantity.setAttribute('class', 'cartFontDiv');
-    const shippingCharges = document.createElement('p');
-    shippingCharges.innerText = `Shipping Charges : ${shipping}`;
-    shippingCharges.setAttribute('class', 'cartFontDiv');
-    parent.append(cartDiv, cartQuantity, shippingCharges);
-}
+    cartTotal2.innerText = `₹${numberWithCommas(total)}`;
+    cartDiv1.append(cartTotal1, cartTotal2);
+    cartDiv1.setAttribute('class', 'cartFontDiv');
+
+    const cartDiv2 = document.createElement('div');
+    const cartQuantity1 = document.createElement('p');
+    cartQuantity1.innerText = `Food Items:`;
+    const cartQuantity2 = document.createElement('p');
+    cartQuantity2.innerText = `${quantity}`;
+    cartDiv2.append(cartQuantity1, cartQuantity2);
+    cartDiv2.setAttribute('class', 'cartFontDiv');
+
+    const cartDiv3 = document.createElement('div');
+    const shippingCharges1 = document.createElement('p');
+    shippingCharges1.innerText = `Shipping Charges:`;
+    const shippingCharges2 = document.createElement('p');
+    shippingCharges2.innerText = `₹${shipping}`;
+    cartDiv3.append(shippingCharges1, shippingCharges2);
+    cartDiv3.setAttribute('class', 'cartFontDiv');
+    parent.append(cartDiv1, cartDiv2, cartDiv3);
+};
