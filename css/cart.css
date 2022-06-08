@@ -1,4 +1,3 @@
-
 #display {
     max-width: 1200px;
     margin: auto;
@@ -7,20 +6,109 @@
     gap: 25px;
 }
 
-#boxSize {
-    max-width: 500px;
-    margin: 20px auto;
-}
-
 .foodBox {
     width: 600px;
     margin: 10px auto;
     padding: 20px;
+}
 
+.cartFontDiv {
+    display: flex;
+    justify-content: space-between;
+    font-size: 18px;
+    font-weight: 600;
+    margin: 20px auto;
 }
 
 #orderDone {
     width: 800px;
     margin: auto;
     margin-top: 100px;
+}
+
+#cartMainDiv {
+    border: 1px solid red;
+    display: grid;
+    padding: 20px;
+    max-width: 1400px;
+    margin: 40px auto;
+    gap: 50px;
+    grid-template-columns: 30% 66%;
+}
+
+#cartMainDiv>div {
+    border: 1px solid red;
+}
+
+
+#display {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+#foodDiv {
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+#imgDiv {
+    overflow: hidden;
+}
+
+#imgDiv>img {
+    width: 100%;
+    transition: all 1s ease-in-out;
+}
+
+#imgDiv>img:hover {
+    transform: scale(1.2);
+}
+
+#detailsDiv {
+    padding: 20px;
+    min-height: 140px;
+}
+
+#detailsDiv p {
+    margin: 0px;
+}
+
+#cartDetailsDiv {
+    padding: 10px 20px;
+    min-height: 30px;
+}
+
+#cartDetailsDiv p {
+    margin: 0px;
+}
+
+
+#btnDiv {
+    padding: 0px 20px 20px;
+}
+
+#btnDiv>button {
+    width: 100%;
+}
+
+@media screen and (max-width: 1024px) {
+    #cartMainDiv {
+        grid-template-columns: 34% 60%;
+    }
+
+    #display {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    #cartMainDiv {
+        grid-template-columns: 100%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    #display {
+        grid-template-columns: repeat(1, 1fr);
+    }
 }

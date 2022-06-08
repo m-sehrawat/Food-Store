@@ -7,7 +7,7 @@ export const appendCartData = (data, parent, orderTotalParent) => {
 
     data.map((item, index) => {
 
-        const { title, image, price, category, rating } = item;
+        const { title, image, price } = item;
 
         const div = document.createElement('div');
         div.setAttribute('id', 'foodDiv');
@@ -59,16 +59,25 @@ export const appendCartData = (data, parent, orderTotalParent) => {
 export const getTotalOrderAmount = (data, parent) => {
     const total = data.map((e) => e.price).reduce((prev, curr) => prev + curr, 0);
     const quantity = data.length;
-    const cartTotal = { total, quantity };
+    const cartTotal = { total, quantity, shipping: total > 499 ? 0 : 50 };
     setItem('cartTotal', cartTotal);
     appendCartTotal(cartTotal, parent);
 }
 
-export const appendCartTotal = ({ total, quantity }, parent) => {
+export const appendCartTotal = ({ total, quantity, shipping }, parent) => {
     parent.innerHTML = null;
-    const cartTotal = document.createElement('p');
-    cartTotal.innerText = `Total: ${total}`
+    const cartDiv = document.createElement('div');
+    const cartTotal1 = document.createElement('p');
+    cartTotal1.innerText = `Food Cost:`;
+    const cartTotal2 = document.createElement('p');
+    cartTotal2.innerText = `₹${total}`;
+    cartDiv.append(cartTotal1, cartTotal2)
+    cartDiv.setAttribute('class', 'cartFontDiv');
     const cartQuantity = document.createElement('p');
-    cartQuantity.innerText = `Quantity: ${quantity}`
-    parent.append(cartTotal, cartQuantity);
+    cartQuantity.innerText = `Food Items: ${quantity}`;
+    cartQuantity.setAttribute('class', 'cartFontDiv');
+    const shippingCharges = document.createElement('p');
+    shippingCharges.innerText = `Shipping Charges : ${shipping}`;
+    shippingCharges.setAttribute('class', 'cartFontDiv');
+    parent.append(cartDiv, cartQuantity, shippingCharges);
 }

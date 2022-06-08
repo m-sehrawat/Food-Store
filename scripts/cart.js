@@ -14,7 +14,6 @@ let cartData = getItem("cartData") || [];
 getTotalOrderAmount(cartData, totalAmount);
 
 const cartTotal = getItem('cartTotal');
-console.log('cartTotal:', cartTotal)
 
 appendCartData(cartData, display, totalAmount);
 
