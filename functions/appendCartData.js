@@ -59,7 +59,7 @@ export const appendCartData = (data, parent, orderTotalParent) => {
 export const getTotalOrderAmount = (data, parent) => {
     const total = data.map((e) => e.price).reduce((prev, curr) => prev + curr, 0);
     const quantity = data.length;
-    const shipping = total > 999 ? 0 : 50;
+    const shipping = total < 999 && quantity > 0 ? 50 : 0;
     const grandTotal = total + shipping;
     const cartTotal = { total, quantity, shipping, grandTotal };
     setItem('cartTotal', cartTotal);
