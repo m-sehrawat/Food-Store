@@ -59,12 +59,14 @@ export const appendCartData = (data, parent, orderTotalParent) => {
 export const getTotalOrderAmount = (data, parent) => {
     const total = data.map((e) => e.price).reduce((prev, curr) => prev + curr, 0);
     const quantity = data.length;
-    const cartTotal = { total, quantity, shipping: total > 499 ? 0 : 50 };
+    const shipping = total > 999 ? 0 : 50;
+    const grandTotal = total + shipping;
+    const cartTotal = { total, quantity, shipping, grandTotal };
     setItem('cartTotal', cartTotal);
     appendCartTotal(cartTotal, parent);
 };
 
-export const appendCartTotal = ({ total, quantity, shipping }, parent) => {
+export const appendCartTotal = ({ total, quantity, shipping, grandTotal }, parent) => {
     parent.innerHTML = null;
 
     const cartDiv1 = document.createElement('div');
@@ -85,10 +87,19 @@ export const appendCartTotal = ({ total, quantity, shipping }, parent) => {
 
     const cartDiv3 = document.createElement('div');
     const shippingCharges1 = document.createElement('p');
-    shippingCharges1.innerText = `Shipping Charges:`;
+    shippingCharges1.innerText = `Shipping charge:`;
     const shippingCharges2 = document.createElement('p');
     shippingCharges2.innerText = `₹${shipping}`;
     cartDiv3.append(shippingCharges1, shippingCharges2);
     cartDiv3.setAttribute('class', 'cartFontDiv');
-    parent.append(cartDiv1, cartDiv2, cartDiv3);
+
+    const cartDiv4 = document.createElement('div');
+    const finalTotal1 = document.createElement('p');
+    finalTotal1.innerText = `Grand Total:`;
+    const finalTotal2 = document.createElement('p');
+    finalTotal2.innerText = `₹${numberWithCommas(grandTotal)}`;
+    cartDiv4.append(finalTotal1, finalTotal2);
+    cartDiv4.setAttribute('class', 'cartFontDiv');
+
+    parent.append(cartDiv1, cartDiv2, cartDiv3, cartDiv4);
 };
