@@ -7,7 +7,7 @@ body {
 }
 
 #loginDiv {
-    margin: 60px auto auto;
+    margin: 60px auto;
     padding: 60px 20px 30px;
     max-width: 400px;
     display: flex;
@@ -20,6 +20,6 @@ body {
 
 @media screen and (max-width: 480px) {
     #loginDiv {
-        margin: 100px auto auto;
+        margin: 80px auto;
     }
 }
