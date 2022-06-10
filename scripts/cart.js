@@ -25,17 +25,15 @@ appendCartTotal(cartTotal, totalAmount);
 form.addEventListener('submit', (e) => {
     e.preventDefault();
     const user = shippingForm(form);
-    console.log('user:', user)
-    console.log(user.isFilled().status);
-    console.log(user.isFilled().message);
+    notifyDiv2.innerHTML = notify('info', user.isFilled().message, 'liveToast2');
+    const toastLiveExample = document.getElementById('liveToast2');
+    const toast = new bootstrap.Toast(toastLiveExample);
+    toast.show();
 
     if (user.isFilled().status) {
-        location.href = "../html/orderPlaced.html"
-        
-    } else {
-        notifyDiv2.innerHTML = notify('danger', user.isFilled().message, 'liveToast2');
-        const toastLiveExample = document.getElementById('liveToast2');
-        const toast = new bootstrap.Toast(toastLiveExample);
-        toast.show();
+        setTimeout(() => {
+            window.location.href = "../html/orderPlaced.html"
+        }, 2000);
     }
+   
 });
