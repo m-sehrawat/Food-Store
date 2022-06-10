@@ -8,14 +8,14 @@ const foodName = document.getElementById('foodName');
 let cartData = getItem("cartData") || [];
 let timerId;
 
-foodName.addEventListener('input', () => { debounce(2000) });
+foodName.addEventListener('input', () => { debounce(1500) });
 
 
 async function displaySearchFood() {
 
     const name = foodName.value;
 
-    if (name.length < 2) return false;
+    if (name.length < 1) return false;
 
     const URL = `https://www.themealdb.com/api/json/v1/1/search.php?s=${name}`;
 
