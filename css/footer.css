@@ -19,3 +19,13 @@
     text-decoration: none;
     color: white;
 }
+
+body::-webkit-scrollbar {
+    width: 6px;
+    background-color: #cfcfcf;
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: #4c4c4c;
+    border-radius: 5px;
+}
