@@ -21,6 +21,7 @@ async function displayFoodItem(name = 'b') {
     const DISH_URL = `https://www.themealdb.com/api/json/v1/1/search.php?s=${name}`;
 
     let dishData = await handleGetData(DISH_URL);
+    setItem('trending', dishData)
     let cartData = getItem("cartData") || [];
 
     appendData(dishData, display, cartData);
@@ -48,8 +49,8 @@ async function displayFoodItem(name = 'b') {
     });
 
     document.getElementById("reset").addEventListener("click", () => {
-        dishData = getItem("food");
-        appendData(dishData, display);
+        dishData = getItem('trending');
+        appendData(dishData, display, cartData);
     });
 }
 
