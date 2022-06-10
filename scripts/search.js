@@ -1,34 +1,39 @@
-import { showDishes, appendDishes } from "../components/show.dishes.js";
-
-let searchBtn = document.getElementById("searchBtn");
-
-searchBtn.addEventListener("click", getRequest)
+import { appendData } from "../functions/appendData.js";
+import { handleGetData } from "../functions/handleGetRequest.js";
+import { getItem } from "../functions/localStorage.js";
 
 
-async function getRequest() {
+const display = document.getElementById("display");
+const foodName = document.getElementById('foodName');
+let cartData = getItem("cartData") || [];
+let timerId;
 
-    let foodName = document.getElementById('foodName').value;
+foodName.addEventListener('input', () => { debounce(2000) });
 
-    showDishes(`https://www.themealdb.com/api/json/v1/1/search.php?f=${foodName}`).then((response) => {
 
-        let data = response;
+async function displaySearchFood() {
 
-        let display = document.getElementById("display");
+    const name = foodName.value;
 
-        appendDishes(data, display)
+    if (name.length < 2) return false;
 
-    }).catch((err) => {
+    const URL = `https://www.themealdb.com/api/json/v1/1/search.php?s=${name}`;
 
-        console.log(err);
+    const data = await handleGetData(URL);
 
-        let error = document.createElement('img');
-
-        error.src = 'https://www.waterandshark.com/assets/img/icons/noresult.gif';
-
-        let display = document.getElementById("display");
-
-        display.innerHTML = null;
-
-        display.append(error);
-    });
+    appendData(data, display, cartData);
 }
+
+
+function debounce(delay) {
+
+    if (timerId) {
+        clearInterval(timerId);
+    }
+
+    timerId = setTimeout(() => {
+        displaySearchFood();
+    }, delay);
+}
+
+
