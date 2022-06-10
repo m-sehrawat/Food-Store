@@ -1,5 +1,6 @@
+import { createToken } from "../functions/extraFunctions.js";
 import { isLogin } from "../functions/isLogin.js";
-import { getItem } from "../functions/localStorage.js";
+import { getItem, setItem } from "../functions/localStorage.js";
 
 const form = document.getElementById('form');
 const userData = getItem("userData") || [];
@@ -8,10 +9,14 @@ const userData = getItem("userData") || [];
 form.addEventListener('submit', (e) => {
     e.preventDefault();
 
-    if (isLogin(form, userData) === 'Empty') {
+    const result = isLogin(form, userData);
+
+    if (result.status === 'Empty') {
         alert(`Please fill the details`);
         
-    } else if (isLogin(form, userData) === true) {
+    } else if (result.status === true) {
+        setItem('token', createToken());
+        setItem('user', result.user);
         alert(`Login Successfully`);
         window.location.href = "../index.html";
 

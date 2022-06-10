@@ -1,7 +1,10 @@
-let navbar = document.getElementById("navbar");
+import { navigationBar } from "../components/navbar.js";
+import { getItem } from "../functions/localStorage.js";
 
-import navigationBar from '../components/navbar.js';
+const navbar = document.getElementById("navbar");
 
-navigationBar().then((res) => {
-    navbar.innerHTML = res;
-});
+const token = getItem('token');
+const name = getItem('user')?.name;
+
+navbar.innerHTML = null;
+navbar.innerHTML = navigationBar(token, name);

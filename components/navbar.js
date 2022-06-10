@@ -1,4 +1,4 @@
-async function navigationBar() {
+export const navigationBar = (token, name) => {
     return (
         `<nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid" id="navItems">
@@ -12,12 +12,11 @@ async function navigationBar() {
                         <a class="nav-link" href="../html/trending.html">Trending</a> &ensp;
                         <a class="nav-link" href="../html/search.html">Search</a> &ensp;
                         <a class="nav-link" href="../html/cart.html">Cart</a> 
-                        <a class="nav-link" href="../html/login.html">Login</a> 
+                        <a class="nav-link" href="../html/login.html">${token ? name : 'login'}</a>
                     </div>
                 </div>
             </div>
         </nav>`
-    )
-}
+    );
+};
 
-export default navigationBar;
