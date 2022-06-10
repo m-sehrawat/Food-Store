@@ -25,7 +25,7 @@ async function displayFoodItem() {
 
     appendData(dishData, display, cartData);
 
-    showTotal(dishData, totalFood, 'Special');
+    showTotal(dishData, totalFood);
 
     document.getElementById("sortLH").addEventListener("click", () => {
         dishData.sort((a, b) => a.price - b.price);
