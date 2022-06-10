@@ -35,7 +35,7 @@ export const appendCartData = (data, parent, orderTotalParent) => {
         const toastLiveExample = document.getElementById('liveToast');
 
         const removeFromCart = document.createElement('button');
-        removeFromCart.textContent = "Remove from cart";
+        removeFromCart.textContent = "Remove";
         removeFromCart.setAttribute('class', 'btn btn-outline-danger');
         removeFromCart.addEventListener('click', () => {
             data.splice(index, 1);

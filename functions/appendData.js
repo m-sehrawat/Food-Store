@@ -43,7 +43,7 @@ export const appendData = (data, parent, cartData) => {
         const toastLiveExample = document.getElementById('liveToast');
 
         const addToCart = document.createElement('button');
-        addToCart.textContent = "Add to cart";
+        addToCart.textContent = "Add to bag";
         addToCart.setAttribute('class', 'btn btn-outline-success');
         addToCart.addEventListener('click', () => {
             cartData.push(item);
