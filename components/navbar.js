@@ -12,7 +12,17 @@ export const navigationBar = (token, name) => {
                         <a class="nav-link" href="../html/trending.html">Trending</a> &ensp;
                         <a class="nav-link" href="../html/search.html">Search</a> &ensp;
                         <a class="nav-link" href="../html/cart.html">Cart</a> 
-                        <a class="nav-link" href="../html/login.html">${token ? name : 'login'}</a>
+                        <a style="display:${!token ? 'block' : 'none'}" class="nav-link" href="../html/login.html">login</a>
+                        <li style="display:${token ? 'block' : 'none'}" class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            ${name}
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <li><a class="dropdown-item" href="../html/search.html">Search Page</a></li>
+                            <li><a class="dropdown-item" href="../html/cart.html">Cart Page</a></li>
+                            <li id="logoutBtn" class="dropdown-item">Logout</li>
+                        </ul>
+                        </li>
                     </div>
                 </div>
             </div>

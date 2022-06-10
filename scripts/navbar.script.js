@@ -1,10 +1,22 @@
 import { navigationBar } from "../components/navbar.js";
-import { getItem } from "../functions/localStorage.js";
+import { getItem, removeItem } from "../functions/localStorage.js";
+
 
 const navbar = document.getElementById("navbar");
 
-const token = getItem('token');
-const name = getItem('user')?.name;
+displayNavbar();
 
-navbar.innerHTML = null;
-navbar.innerHTML = navigationBar(token, name);
+if (getItem('token')) {
+    document.getElementById("logoutBtn").addEventListener('click', () => {
+        removeItem('token');
+        alert(`Logout Successfully`);
+        displayNavbar();
+    });
+}
+
+
+function displayNavbar() {
+    const token = getItem('token');
+    const name = getItem('user')?.name;
+    navbar.innerHTML = navigationBar(token, name);
+}
