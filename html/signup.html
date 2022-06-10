@@ -9,8 +9,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/login.css">
-    <title>Login</title>
+    <link rel="stylesheet" href="../css/signup.css">
+    <title>Signup</title>
 </head>
 
 <body>
@@ -19,11 +19,13 @@
 
     <form id="form">
         <div id="loginDiv" class="border">
-            <h1 class="text-center">Login</h1>
+            <h1 class="text-center">Signup</h1>
+            <input class="form-control" id="name" type="text" placeholder="Full Name">
             <input class="form-control" id="email" type="email" placeholder="Email">
+            <input class="form-control" id="mobile" type="number" placeholder="Mobile">
             <input class="form-control" id="password" type="password" placeholder="Password">
-            <input class="btn btn-success" type="submit" value="Login">
-            <a href="./signup.html" class="text-end mt-3 text-decoration-none">New User? Sign Up</a>
+            <input class="btn btn-success" type="submit" value="Signup">
+            <a href="./login.html" class="text-end mt-3 text-decoration-none">Already User? Login</a>
         </div>
     </form>
 
@@ -36,4 +38,4 @@
 <!-- ------------------------ Navbar import ----------------------------------- -->
 <script type="module" src="../scripts/navbar.script.js"></script>
 
-<script src="../scripts/login.js"></script>
+<script src="../scripts/signup.js"></script>
