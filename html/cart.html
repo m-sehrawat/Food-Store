@@ -21,10 +21,28 @@
                 <div class="card-header fs-3 fw-bold text-center">
                     Order Details
                 </div>
-                <div class="card-body ">
-                    <div id="totalAmount" class="my-4"></div>
-                    <div class="d-grid">
-                        <a onclick="orderDone()" class="btn btn-outline-success">Place Order</a>
+                <div class="card-body p-0">
+                    <div id="totalAmount" class="p-4"></div>
+                    <!-- <hr> -->
+                    <div class="card-header fs-3 fw-bold text-center">
+                        Shipping Details
+                    </div>
+                    
+                    <div class="p-4 mt-2">
+                        <input class="form-control mb-3" type="text" placeholder="Name">
+                        <input class="form-control mb-3" type="text" placeholder="Email">
+                        <input class="form-control mb-3" type="text" placeholder="Mobile">
+                        <div class="input-group mb-3">
+                            <input class="form-control" type="text" placeholder="Street">
+                            <input class="form-control" type="text" placeholder="City">
+                        </div>
+                        <div class="input-group mb-4">
+                            <input class="form-control" type="text" placeholder="State">
+                            <input class="form-control" type="text" placeholder="Pincode">
+                        </div>
+                        <div class="d-grid">
+                            <a onclick="orderDone()" class="btn btn-success">Place Order</a>
+                        </div>
                     </div>
                 </div>
             </div>
