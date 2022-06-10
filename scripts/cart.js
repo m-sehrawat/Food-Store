@@ -24,6 +24,12 @@ appendCartTotal(cartTotal, totalAmount);
 
 form.addEventListener('submit', (e) => {
     e.preventDefault();
+
+    if (!getItem('token')) {
+        alert('Please login first');
+        return;
+    }
+
     const user = shippingForm(form);
     notifyDiv2.innerHTML = notify('info', user.isFilled().message, 'liveToast2');
     const toastLiveExample = document.getElementById('liveToast2');
@@ -35,5 +41,5 @@ form.addEventListener('submit', (e) => {
             window.location.href = "../html/orderPlaced.html"
         }, 2000);
     }
-   
+
 });
