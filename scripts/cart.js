@@ -1,6 +1,7 @@
 import { getItem } from "../functions/localStorage.js";
 import { appendCartData, appendCartTotal, getTotalOrderAmount } from "../functions/appendCartData.js";
 import { notify } from "../components/notify.js";
+import { shippingForm } from "../functions/shippingForm.js";
 
 
 const display = document.getElementById("display");
@@ -20,4 +21,9 @@ appendCartData(cartData, display, totalAmount);
 
 appendCartTotal(cartTotal, totalAmount);
 
-
+form.addEventListener('submit', (e) => { 
+    e.preventDefault();
+   const user = shippingForm(form);
+   console.log('user:', user)
+   console.log('user:', user.isFilled())
+ })
