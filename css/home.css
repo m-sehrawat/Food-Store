@@ -4,7 +4,7 @@ body {
 
 .gird {
     max-width: 1200px;
-    margin: 20px auto 0px;
+    margin: 20px auto 60px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;

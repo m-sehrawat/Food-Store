@@ -13,3 +13,12 @@ body {
 #foodBox>p{
     font-weight: 300;
 }
+
+#searchImage {
+    max-width: 400px;
+    margin: 20px auto;
+}
+
+#searchImage>img{
+    width: 100%;
+}
