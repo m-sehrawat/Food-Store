@@ -12,6 +12,7 @@ async function navigationBar() {
                         <a class="nav-link" href="../html/trending.html">Trending</a> &ensp;
                         <a class="nav-link" href="../html/search.html">Search</a> &ensp;
                         <a class="nav-link" href="../html/cart.html">Cart</a> 
+                        <a class="nav-link" href="../html/login.html">Login</a> 
                     </div>
                 </div>
             </div>
