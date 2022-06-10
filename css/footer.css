@@ -1,0 +1,21 @@
+#footer {
+    border: 1px solid #282a35;
+    height: 200px;
+    background-color: #282a35;
+}
+
+#footer p {
+    margin-top: 25px;
+    color: white;
+}
+
+#footer>div {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+#footer>div>button>a {
+    text-decoration: none;
+    color: white;
+}
