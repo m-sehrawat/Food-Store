@@ -12,7 +12,6 @@ export const shippingForm = (form) => {
         }
 
         isFilled() {
-
             if (this.name.length < 2) {
                 return {
                     message: "Please fill your name",
