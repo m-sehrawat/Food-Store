@@ -30,6 +30,7 @@ form.addEventListener('submit', (e) => {
     console.log(user.isFilled().message);
 
     if (user.isFilled().status) {
+        location.href = "../html/orderPlaced.html"
         
     } else {
         notifyDiv2.innerHTML = notify('danger', user.isFilled().message, 'liveToast2');

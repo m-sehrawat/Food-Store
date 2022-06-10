@@ -1,0 +1,14 @@
+#mainBox{
+max-width: 600px;
+margin: auto;
+}
+
+#mainBox>img{
+    width: 100%;
+}
+
+@media screen and (max-width: 480px) {
+    #mainBox{
+        margin: 20vh auto auto;
+        }
+}
