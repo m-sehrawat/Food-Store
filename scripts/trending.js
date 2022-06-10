@@ -5,22 +5,22 @@ import { getItem, setItem } from "../functions/localStorage.js";
 import { showTotal } from "../functions/showTotal.js";
 
 
-const DISH_URL = `https://www.themealdb.com/api/json/v1/1/search.php?f=b`;
-
 const display = document.getElementById("display");
 const totalFood = document.getElementById("totalFood");
 const notifyDiv = document.getElementById("notifyDiv");
-
+const trendingBtn = document.getElementsByName('trendingBtn');
 notifyDiv.innerHTML = notify('success', 'Item is added to the bag');
 
+for (let btn of trendingBtn) {
+    btn.addEventListener('click', () => { displayFoodItem(btn.value) });
+}
 
-async function displayFoodItem() {
 
-    if (!getItem("trending")) {
-        setItem("trending", await handleGetData(DISH_URL));
-    }
+async function displayFoodItem(name = 'b') {
 
-    let dishData = getItem("trending");
+    const DISH_URL = `https://www.themealdb.com/api/json/v1/1/search.php?s=${name}`;
+
+    let dishData = await handleGetData(DISH_URL);
     let cartData = getItem("cartData") || [];
 
     appendData(dishData, display, cartData);
