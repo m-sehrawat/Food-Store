@@ -35,7 +35,7 @@ body {
     max-width: 1400px;
     margin: 40px auto;
     gap: 50px;
-    grid-template-columns: 30% 66%;
+    grid-template-columns: 66% 30%;
 }
 
 #display {
@@ -89,7 +89,7 @@ body {
 
 @media screen and (max-width: 1024px) {
     #cartMainDiv {
-        grid-template-columns: 34% 60%;
+        grid-template-columns: 60% 34%;
     }
 
     #display {
