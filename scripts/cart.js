@@ -40,6 +40,7 @@ form.addEventListener('submit', (e) => {
 
     if (!getItem('token')) {
         alert('Please login first');
+        window.location.href = "../html/login.html";
         return;
     }
 
