@@ -26,7 +26,7 @@ appendCartData(cartData, display, totalAmount);
 appendCartTotal(cartTotal, totalAmount);
 
 applyCoupon.addEventListener('click', () => { 
-    console.log('discountPercent:', discountPercent)
+    const discountPercent = getCoupon(couponInput.value);
     if(discountPercent){
         alert(`Coupon applied successfully, you got ${discountPercent}% discount`);
         getTotalOrderAmount(cartData, totalAmount, discountPercent);
