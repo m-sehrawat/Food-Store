@@ -56,17 +56,18 @@ export const appendCartData = (data, parent, orderTotalParent) => {
 };
 
 
-export const getTotalOrderAmount = (data, parent) => {
+export const getTotalOrderAmount = (data, parent, discountPercent = 0) => {
     const total = data.map((e) => e.price).reduce((prev, curr) => prev + curr, 0);
     const quantity = data.length;
     const shipping = total < 999 && quantity > 0 ? 50 : 0;
-    const grandTotal = total + shipping;
-    const cartTotal = { total, quantity, shipping, grandTotal };
+    const discount = Math.floor(total * (discountPercent / 100));
+    const grandTotal = total + shipping - discount;
+    const cartTotal = { total, quantity, shipping, discount, grandTotal };
     setItem('cartTotal', cartTotal);
     appendCartTotal(cartTotal, parent);
 };
 
-export const appendCartTotal = ({ total, quantity, shipping, grandTotal }, parent) => {
+export const appendCartTotal = ({ total, quantity, shipping, discount, grandTotal }, parent) => {
     parent.innerHTML = null;
 
     const cartDiv1 = document.createElement('div');
@@ -94,12 +95,20 @@ export const appendCartTotal = ({ total, quantity, shipping, grandTotal }, paren
     cartDiv3.setAttribute('class', 'cartFontDiv');
 
     const cartDiv4 = document.createElement('div');
+    const discountTotal1 = document.createElement('p');
+    discountTotal1.innerText = `Discount:`;
+    const discountTotal2 = document.createElement('p');
+    discountTotal2.innerText = `₹${numberWithCommas(discount)}`;
+    cartDiv4.append(discountTotal1, discountTotal2);
+    cartDiv4.setAttribute('class', 'cartFontDiv');
+
+    const cartDiv5 = document.createElement('div');
     const finalTotal1 = document.createElement('p');
     finalTotal1.innerText = `Grand Total:`;
     const finalTotal2 = document.createElement('p');
     finalTotal2.innerText = `₹${numberWithCommas(grandTotal)}`;
-    cartDiv4.append(finalTotal1, finalTotal2);
-    cartDiv4.setAttribute('class', 'cartFontDiv');
+    cartDiv5.append(finalTotal1, finalTotal2);
+    cartDiv5.setAttribute('class', 'cartFontDiv');
 
-    parent.append(cartDiv1, cartDiv2, cartDiv3, cartDiv4);
+    parent.append(cartDiv1, cartDiv2, cartDiv3, cartDiv4, cartDiv5);
 };

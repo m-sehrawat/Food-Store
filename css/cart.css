@@ -20,7 +20,7 @@ body {
     justify-content: space-between;
     font-size: 20px;
     font-weight: 600;
-    margin: 10px auto;
+    
 }
 
 #orderDone {
@@ -85,6 +85,12 @@ body {
 
 #btnDiv>button {
     width: 100%;
+}
+
+#couponDiv {
+    padding: 10px 20px 20px;
+    display: flex;
+    flex-direction: column;
 }
 
 @media screen and (max-width: 1024px) {
