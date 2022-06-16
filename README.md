@@ -50,7 +50,7 @@
 - Cart Add/Remove Items
 - Address Management
 - Coupons are provided for the discount
-- User Authentication before placing order
+- User Authentication before placing an order
 
 <br />
 
